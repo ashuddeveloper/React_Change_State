@@ -9,15 +9,7 @@ function App() {
 
   function inputHandler(event) {
     const { value, name } = event.target;
-    setContact((prevValue) => {
-      if (name === "fName") {
-        return { fName: value, lName: prevValue.lName, email: prevValue.email };
-      } else if (name === "lName") {
-        return { lName: value, fName: prevValue.fName, email: prevValue.email };
-      } else if (name === "email") {
-        return { email: value, fName: prevValue.fName, lName: prevValue.lName };
-      }
-    });
+    setContact((prevValue) => ({ ...prevValue, [name]: value }));
   }
 
   return (
